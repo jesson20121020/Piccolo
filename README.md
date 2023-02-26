@@ -101,6 +101,11 @@ cmake -DCMAKE_TRY_COMPILE_TARGET_TYPE="STATIC_LIBRARY" -DCMAKE_EXPORT_COMPILE_CO
 copy compile_db_temp\compile_commands.json .
 ```
 
+For MacOS
+```shell
+xcodebuild --project build/Piccolo.xproject -configuration Release | xcpretty -r json-compilation-database --output compile_commands.json
+```
+
 ### Using Physics Debug Renderer
 Currently Physics Debug Renderer is only available on Windows. You can use the following command to generate the solution with the debugger project.
 
