@@ -9,6 +9,7 @@
 #include "editor/include/editor_input_manager.h"
 #include "editor/include/editor_scene_manager.h"
 #include "editor/include/editor_ui.h"
+#include "../../3rdparty/tracy/public/tracy/TracyC.h"
 
 namespace Piccolo
 {
@@ -55,6 +56,7 @@ namespace Piccolo
         float delta_time;
         while (true)
         {
+            TracyCFrameMark
             delta_time = m_engine_runtime->calculateDeltaTime();
             g_editor_global_context.m_scene_manager->tick(delta_time);
             g_editor_global_context.m_input_manager->tick(delta_time);

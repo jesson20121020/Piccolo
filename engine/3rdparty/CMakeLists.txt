@@ -68,6 +68,12 @@ if(NOT TARGET sol2)
     add_subdirectory(sol2-3.3.0)
 endif()
 
+if (NOT TARGET tracy)
+	option( TRACY_ENABLE "" ON)
+	option( TRACY_ON_DEMAND "" ON)
+	add_subdirectory(tracy)
+endif()
+
 
 if(NOT TARGET lua)
     include(lua.cmake)
