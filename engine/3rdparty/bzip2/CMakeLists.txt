@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 3.21)
 
 project(bzip2)
-set(VERSION "1.0.8" CACHE STRING "Specify Which Version Used")
+set(BZIP2_VERSION "1.0.8" CACHE STRING "Specify Which Version Used")
 set(LINK_TYPE STATIC CACHE STRING "Choose Link Type: STATIC or SHARED")
 set_property(CACHE LINK_TYPE PROPERTY STRINGS STATIC SHARED)
 set(PLATFORM "WIN32" CACHE STRING "Choose Build Platform")
-set(PROJECT_SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR}/${PROJECT_NAME}-${VERSION})
+set(PROJECT_SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR}/${PROJECT_NAME}-${BZIP2_VERSION})
+set(${PROJECT_NAME}_include "${PROJECT_SOURCE_DIR}" CACHE STRING "${PROJECT_NAME} include directory")
 
 # 收集源码文件通用函数
 macro(collect_source_files SOURCE_DIR INCLUDES EXCLUDES OUTPUT)
