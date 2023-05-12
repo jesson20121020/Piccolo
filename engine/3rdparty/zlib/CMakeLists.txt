@@ -1,0 +1,18 @@
+project_begin()
+project_name("zlib")
+project_version("1.2.13")
+project_source_dir("zlib-1.2.13")
+project_add_source_inclues(
+	"adler32.c"
+	"compress.c"
+	"crc32.c"
+	"deflate.c"
+	"infback.c"
+	"inffast.c"
+	"inflate.c"
+	"inftrees.c"
+	"trees.c"
+	"uncompr.c"
+	"zutil.c"
+)
+project_end()

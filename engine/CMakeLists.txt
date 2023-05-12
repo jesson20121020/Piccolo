@@ -1,6 +1,7 @@
 
 set(ENGINE_ROOT_DIR "${PICCOLO_ROOT_DIR}/engine")
 set(THIRD_PARTY_DIR "${ENGINE_ROOT_DIR}/3rdparty")
+set(EXTERNALS_DIR "${ENGINE_ROOT_DIR}/Externals")
 set(ENGINE_ASSET_DIR "/asset")
 
 set(DEPLOY_CONFIG_DIR "configs/deployment")
@@ -50,6 +51,7 @@ endif()
 set(SHADER_COMPILE_TARGET PiccoloShaderCompile)
 add_subdirectory(shader)
 
+add_subdirectory(Externals)
 add_subdirectory(3rdparty)
 
 add_subdirectory(source/runtime)

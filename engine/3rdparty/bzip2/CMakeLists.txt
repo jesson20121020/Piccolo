@@ -1,20 +1,12 @@
-set(PROJECT_NAME "bzip2")
-set(BZIP2_VERSION "1.0.8" CACHE STRING "Specify Which Version Used")
-set(PROJECT_SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR}/${PROJECT_NAME}-${BZIP2_VERSION})
-
-list(APPEND PROJECT_SOURCE_INCLUDES)
-
-list(APPEND PROJECT_SOURCE_EXCLUDES
+project_begin()
+project_name("bzip2")
+project_version("1.0.8")
+project_source_dir("bzip2-1.0.8")
+project_add_source_excludes(
 	"bzip2recover.c"
 	"dlltest.c"
 	"mk251.c"
 	"spewG.c"
 	"unzcrash.c"
 )
-
-list(APPEND PROJECT_INCLUDE_DIRS)
-list(APPEND PROJECT_DEFINITIONS)
-list(APPEND PROJECT_DEPENDS)
-list(APPEND PROJECT_DEPEND_EXTERNALS)
-
-project_define(${PROJECT_NAME} ${PROJECT_SOURCE_DIR} "${PROJECT_SOURCE_INCLUDES}" "${PROJECT_SOURCE_EXCLUDES}" "${PROJECT_INCLUDE_DIRS}" "${PROJECT_DEFINITIONS}" "${PROJECT_DEPENDS}" "${PROJECT_DEPEND_EXTERNALS}")
+project_end()

@@ -1,24 +1,23 @@
-set(PROJECT_NAME "python")
-# python版本选择
-set(PYTHON_VERSION "3.11.3" CACHE STRING "Specify Which Python Version Used")
-# python源码所在目录
-set(PROJECT_SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR}/Python-${PYTHON_VERSION})
+project_begin()
 
-# 根据平台指定源码目录包含列表
-list(APPEND PROJECT_SOURCE_INCLUDES
+project_name("python")
+project_version("3.11.3")
+project_source_dir("Python-3.11.3")
+project_add_source_inclues(
 	"Include"
 	"Modules"
 	"Objects"
 	"Parser"
 	"Python"
 )
+
 if(TARGET_PLATFORM STREQUAL PLATFORM_WIN)
-    list(APPEND PROJECT_SOURCE_INCLUDES "PC")
+    project_add_source_inclues("PC")
 elseif(TARGET_PLATFORM STREQUAL PLATFORM_MAC)
-    list(APPEND PROJECT_SOURCE_INCLUDES "Mac")
+    project_add_source_inclues("Mac")
 endif()
 
-list(APPEND PROJECT_SOURCE_EXCLUDES
+project_add_source_excludes(
     "Modules/_blake2"
     "Modules/_ctypes"
 	"Modules/clinic"
@@ -26,10 +25,30 @@ list(APPEND PROJECT_SOURCE_EXCLUDES
 	"Modules/_cursesmodule.c"
 	"Modules/_dbmmodule.c"
 	"Modules/_gdbmmodule.c"
+	"Modules/_posixsubprocess.c"
+	"Modules/_scproxy.c"
+	"Modules/_ssl/cert.c"
+	"Modules/_tkinter.c"
+	"Modules/tkappinit.c"
+	"Modules/fcntlmodule.c"
+	"Modules/grpmodule.c"
+	"Modules/nismodule.c"
+	"Modules/ossaudiodev.c"
+	"Modules/pwdmodule.c"
+	"Modules/readline.c"
+	"Modules/resource.c"
+	"Modules/spwdmodule.c"
+	"Modules/syslogmodule.c"
+	"Modules/termios.c"
+	"Python/dup2.c"
+	"Python/dynload_hpux.c"
+	"Python/dynload_shlib.c"
+	"Python/emscripten_signal.c"
+	"Modules/_ssl/debughelpers.c"
 )
 
 # 头文件查找目录
-list(APPEND PROJECT_INCLUDE_DIRS
+project_add_include_dirs(
 	"Python"
 	"Include"
 	"Include/internal"
@@ -38,21 +57,19 @@ list(APPEND PROJECT_INCLUDE_DIRS
 	"Modules/expat"
 )
 
-list(APPEND PROJECT_DEFINITIONS
-	"Py_BUILD_CORE"
-)
+project_add_definitions(Py_BUILD_CORE _Py_HAVE_ZLIB Py_BUILD_CORE_BUILTIN Py_ENABLE_SHARED)
 
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-	list(APPEND PROJECT_DEFINITIONS "CONFIG_64")
+	project_add_definitions("CONFIG_64")
 else()
-	list(APPEND PROJECT_DEFINITIONS "CONFIG_32")
+	project_add_definitions("CONFIG_32")
 endif()
 
-if(TARGET_PLATFORM EQUAL PLATFORM_WIN)
-	list(APPEND PROJECT_DEFINITIONS "MASM")
+if(TARGET_PLATFORM STREQUAL PLATFORM_WIN)
+	project_add_definitions("MASM")
 endif()
 
-list(APPEND PROJECT_DEPENDS bzip2)
-list(APPEND PROJECT_DEPEND_EXTERNALS)
+project_add_depends(bzip2 sqlite lzma zlib)
+project_add_depend_externals(openssl)
 
-project_define(${PROJECT_NAME} ${PROJECT_SOURCE_DIR} "${PROJECT_SOURCE_INCLUDES}" "${PROJECT_SOURCE_EXCLUDES}" "${PROJECT_INCLUDE_DIRS}" "${PROJECT_DEFINITIONS}" "${PROJECT_DEPENDS}" "${PROJECT_DEPEND_EXTERNALS}")
+project_end()

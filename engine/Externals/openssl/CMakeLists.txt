@@ -1,0 +1,6 @@
+project_begin()
+project_name("openssl")
+project_version("1.1.1t")
+project_type(${PROJECT_TYPE_PRECOMPILED})
+project_source_dir("openssl-1.1.1t")
+project_end()
