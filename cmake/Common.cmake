@@ -1,0 +1,13 @@
+
+# 定义链接类型
+set(LINK_TYPE SHARED CACHE STRING "Choose Python Link Type: STATIC or SHARED" FORCE)
+set_property(CACHE LINK_TYPE PROPERTY STRINGS STATIC SHARED)
+
+# 定义平台定义
+set(PLATFORM_WIN "Windows")
+set(PLATFORM_MAC "Mac")
+set(PLATFORM_LINUX "Linux")
+set(PLATFORM_IOS "IOS")
+set(PLATFORM_ANDROID "Android")
+
+set(TARGET_PLATFORM ${PLATFORM_WIN} CACHE STRING "Choose Build Target Platform")
