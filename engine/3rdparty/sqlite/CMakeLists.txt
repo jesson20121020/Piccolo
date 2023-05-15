@@ -1,5 +1,0 @@
-project_begin()
-project_name("sqlite")
-project_version("3.40.1.0")
-project_source_dir("sqlite-3.40.1.0")
-project_end()

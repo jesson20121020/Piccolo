@@ -79,22 +79,6 @@ if(NOT TARGET lua)
     include(lua.cmake)
 endif()
 
-
-if (NOT TARGET bzip2)
-	add_subdirectory(bzip2)
-    set_target_properties(bzip2 PROPERTIES FOLDER ${third_party_folder})
-endif()
-
-if (NOT TARGET sqlite)
-	add_subdirectory(sqlite)
-    set_target_properties(sqlite PROPERTIES FOLDER ${third_party_folder})
-endif()
-
-if (NOT TARGET lzma)
-	add_subdirectory(xc)
-    set_target_properties(lzma PROPERTIES FOLDER ${third_party_folder})
-endif()
-
 if (NOT TARGET zlib)
 	add_subdirectory(zlib)
     set_target_properties(zlib PROPERTIES FOLDER ${third_party_folder})
@@ -102,5 +86,9 @@ endif()
 
 if (NOT TARGET Python)
 	add_subdirectory(Python)
-    set_target_properties(python PROPERTIES FOLDER ${third_party_folder})
+    set_target_properties(python311 PROPERTIES FOLDER ${third_party_folder})
+endif()
+
+if(TARGET_PLATFORM STREQUAL PLATFORM_WIN)
+	include(Python/PythonExe.cmake)
 endif()

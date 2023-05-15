@@ -15,4 +15,5 @@ project_add_source_inclues(
 	"uncompr.c"
 	"zutil.c"
 )
+project_add_definitions(ZLIB_DLL)
 project_end()

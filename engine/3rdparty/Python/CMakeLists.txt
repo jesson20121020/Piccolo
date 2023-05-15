@@ -1,6 +1,6 @@
 project_begin()
 
-project_name("python")
+project_name("python311")
 project_version("3.11.3")
 project_source_dir("Python-3.11.3")
 
