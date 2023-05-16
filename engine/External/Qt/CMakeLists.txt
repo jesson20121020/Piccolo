@@ -1,0 +1,13 @@
+project_begin()
+project_name("Qt")
+project_version("5.11.3")
+project_type(${PROJECT_TYPE_PRECOMPILED})
+project_source_dir("Qt-5.11.3")
+project_add_include_dirs(
+	"Include"
+	"Include/QtCore"
+	"Include/QtGui"
+	"Include/QtWidgets"
+	"Include/QtXml"
+)
+project_end()

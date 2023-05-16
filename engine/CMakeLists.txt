@@ -51,7 +51,7 @@ endif()
 set(SHADER_COMPILE_TARGET PiccoloShaderCompile)
 add_subdirectory(shader)
 
-add_subdirectory(Externals)
+add_subdirectory(External)
 add_subdirectory(3rdparty)
 
 add_subdirectory(source/runtime)

@@ -95,3 +95,8 @@ if(TARGET_PLATFORM STREQUAL PLATFORM_WIN)
 	include(Python/PythonExe.cmake)
     set_target_properties(python_exe PROPERTIES FOLDER "Tools")
 endif()
+
+if (NOT TARGET PyQt)
+	add_subdirectory(PyQt)
+    set_target_properties(PyQt PROPERTIES FOLDER ${third_party_folder})
+endif()
