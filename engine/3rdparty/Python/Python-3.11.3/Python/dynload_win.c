@@ -182,6 +182,7 @@ _Py_CheckPython3(void)
     }
     python3_checked = 1;
 
+    #ifdef Py_ENABLE_SHARED
     /* If there is a python3.dll next to the python3y.dll,
        use that DLL */
     if (PyWin_DLLhModule && GetModuleFileNameW(PyWin_DLLhModule, py3path, MAXPATHLEN)) {
@@ -194,6 +195,7 @@ _Py_CheckPython3(void)
             }
         }
     }
+    #endif
 
     /* If we can locate python3.dll in our application dir,
        use that DLL */

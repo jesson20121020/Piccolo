@@ -72,11 +72,13 @@ if (NOT TARGET tracy)
 	option( TRACY_ENABLE "" ON)
 	option( TRACY_ON_DEMAND "" ON)
 	add_subdirectory(tracy)
+    set_target_properties(TracyClient PROPERTIES FOLDER ${third_party_folder})
 endif()
 
 
 if(NOT TARGET lua)
     include(lua.cmake)
+    set_target_properties(lua_static PROPERTIES FOLDER ${third_party_folder})
 endif()
 
 if (NOT TARGET zlib)
@@ -91,4 +93,5 @@ endif()
 
 if(TARGET_PLATFORM STREQUAL PLATFORM_WIN)
 	include(Python/PythonExe.cmake)
+    set_target_properties(python_exe PROPERTIES FOLDER "Tools")
 endif()

@@ -225,8 +225,14 @@ project_add_include_dirs(
 	"PC"
 )
 
-project_add_definitions(Py_ENABLE_SHARED NO_PYC Py_BUILD_CORE Py_BUILD_CORE_BUILTIN _Py_HAVE_ZLIB)
+project_add_definitions(NO_PYC Py_BUILD_CORE Py_BUILD_CORE_BUILTIN _Py_HAVE_ZLIB)
 project_add_definitions(VERSION="3.11" PLATLIBDIR="lib")
+
+if(LINK_TYPE STREQUAL STATIC)
+	project_add_definitions(Py_NO_ENABLE_SHARED)
+else()
+	project_add_definitions(Py_ENABLE_SHARED)
+endif()
 
 if(TARGET_PLATFORM STREQUAL PLATFORM_WIN)
 	project_add_definitions(PREFIX=NULL EXEC_PREFIX=NULL)

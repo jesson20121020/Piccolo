@@ -15,5 +15,7 @@ project_add_source_inclues(
 	"uncompr.c"
 	"zutil.c"
 )
-project_add_definitions(ZLIB_DLL)
+if (LINK_TYPE STREQUAL SHARED)
+	project_add_definitions(ZLIB_DLL)
+endif()
 project_end()
