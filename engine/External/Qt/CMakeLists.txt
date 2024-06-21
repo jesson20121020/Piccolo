@@ -9,5 +9,6 @@ project_add_include_dirs(
 	"Include/QtGui"
 	"Include/QtWidgets"
 	"Include/QtXml"
+	"Include/QtSvg"
 )
 project_end()

@@ -75,6 +75,12 @@ extern PyObject* PyInit__opcode(void);
 extern PyObject* PyInit__contextvars(void);
 extern PyObject* PyInit__tokenize(void);
 
+// 以下本来是一些动态库，这里直接编译成内置模块
+extern PyObject* PyInit_unicodedata(void);
+extern PyObject* PyInit_select(void);
+extern PyObject* PyInit__socket(void);
+extern PyObject* PyInit__overlapped(void);
+
 /* tools/freeze/makeconfig.py marker for additional "extern" */
 /* -- ADDMODULE MARKER 1 -- */
 
@@ -169,6 +175,12 @@ struct _inittab _PyImport_Inittab[] = {
     {"_opcode", PyInit__opcode},
 
     {"_contextvars", PyInit__contextvars},
+
+    // 以下本来是一些动态库pyd， 这里直接编译成内置模块, 方便多平台使用
+    {"unicodedata", PyInit_unicodedata},
+    {"select", PyInit_select},
+    {"_socket", PyInit__socket},
+    //{"_overlapped", PyInit__overlapped},
 
     /* Sentinel */
     {0, 0}

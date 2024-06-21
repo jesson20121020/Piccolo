@@ -6,7 +6,8 @@
 int
 wmain(int argc, wchar_t **argv)
 {
-    return Py_Main(argc, argv);
+    auto ret = Py_Main(argc, argv);
+    return ret;
 }
 #else
 int

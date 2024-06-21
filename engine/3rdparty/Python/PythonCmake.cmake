@@ -1,6 +1,6 @@
 project_begin()
 
-project_name("python311")
+project_name("pythoncore")
 project_version("3.11.3")
 project_source_dir("Python-3.11.3")
 
@@ -185,7 +185,8 @@ project_add_source_inclues(
 
 	Python/hashtable.c
 	Python/deepfreeze/deepfreeze.c
-
+	
+	Modules/_ctypes
 	Modules/_io/_iomodule.c
 	Modules/_io/bufferedio.c
 	Modules/_io/bytesio.c
@@ -243,7 +244,7 @@ if(TARGET_PLATFORM STREQUAL PLATFORM_WIN)
 	project_add_definitions("_CRT_SECURE_NO_WARNINGS /wd4819 /wd4018 /wd4996 /wd4101 /wd4244 /wd4267 /wd4311 /wd4312 /wd4133")
 endif()
 
-project_add_depends(zlib)
+project_add_depends(zlib libffi)
 if (TARGET_PLATFORM STREQUAL PLATFORM_WIN)
 	project_add_depends(version.lib Shlwapi.lib Ws2_32.lib Iphlpapi.lib Pathcch.lib bcrypt.lib)
 else()

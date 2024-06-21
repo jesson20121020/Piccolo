@@ -2,8 +2,8 @@
 
 message(STATUS "Configuring PyQt5")
 
-#include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-#conan_basic_setup()
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
 
 set(SIPLIB
 	siplib/apiversions.c
@@ -865,6 +865,12 @@ set(PYQT5
 	PyQt5/QtXml/sipQtXmlQXmlParseException.cpp
 	PyQt5/QtXml/sipQtXmlQXmlReader.cpp
 	PyQt5/QtXml/sipQtXmlQXmlSimpleReader.cpp
+	PyQt5/QtSvg/sipAPIQtSvg.h
+	PyQt5/QtSvg/sipQtSvgcmodule.cpp
+	PyQt5/QtSvg/sipQtSvgQSvgWidget.cpp
+	PyQt5/QtSvg/sipQtSvgQSvgRenderer.cpp
+	PyQt5/QtSvg/sipQtSvgQSvgGenerator.cpp
+	PyQt5/QtSvg/sipQtSvgQGraphicsSvgItem.cpp
 )
 
 
@@ -892,9 +898,9 @@ include_directories(
 )
 
 if (CONAN_SETTINGS_BUILD_TYPE MATCHES "RelWithDebInfo")
-	set(_LIBS Qt5Widgets Qt5Gui Qt5Core Qt5Xml)
+	set(_LIBS Qt5Widgets Qt5Gui Qt5Core Qt5Xml Qt5Svg)
 else()
-	set(_LIBS Qt5Widgetsd Qt5Guid Qt5Cored Qt5Xmld)
+	set(_LIBS Qt5Widgetsd Qt5Guid Qt5Cored Qt5Xmld Qt5Svgd)
 endif()
 
 include_directories(
@@ -905,10 +911,12 @@ include_directories(
 	"${CMAKE_CURRENT_SOURCE_DIR}/PyQt5/QtGui"
 	"${CMAKE_CURRENT_SOURCE_DIR}/PyQt5/QtWidgets"
 	"${CMAKE_CURRENT_SOURCE_DIR}/PyQt5/QtXml"
+	"${CMAKE_CURRENT_SOURCE_DIR}/PyQt5/QtSvg"
 	"${CONAN_INCLUDE_DIRS_QT}/QtCore"
 	"${CONAN_INCLUDE_DIRS_QT}/QtGui"
 	"${CONAN_INCLUDE_DIRS_QT}/QtWidgets"
 	"${CONAN_INCLUDE_DIRS_QT}/QtXml"
+	"${CONAN_INCLUDE_DIRS_QT}/QtSvg"
 )
 
 add_definitions(-DQT_NO_DEBUG)

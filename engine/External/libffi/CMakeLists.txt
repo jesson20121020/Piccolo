@@ -1,0 +1,6 @@
+project_begin()
+project_name("libffi")
+project_version("3.4.4")
+project_type(${PROJECT_TYPE_PRECOMPILED})
+project_source_dir("libffi-3.4.4")
+project_end()
